@@ -7,11 +7,14 @@ def read_students(filename):
     with open(filename, 'r') as file:
         for line in file:
             parts = line.strip().split()
-            if len(parts) >= 3:
-                students[parts[1] + " " + parts[2]] = parts[0]  # student name -> student ID
+            if len(parts) >= 2:
+                student_id = parts[0]
+                name = " ".join(parts[1:])  # handles any number of name parts
+                students[name] = student_id
             else:
-                print(f"Skipping invalid student line: {line.strip()}")
+                print(f"Skipping bad line: {line.strip()}")
     return students
+
 
 
 def read_assignments(filename):
