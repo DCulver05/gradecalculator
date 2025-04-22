@@ -4,11 +4,15 @@ import matplotlib.pyplot as plt
 
 def read_students(filename):
     students = {}
-    with open(filename, "r") as f:
-        for line in f:
-            parts = line.split()
-            students[parts[1] + " " + parts[2]] = parts[0]  # student name -> student ID
+    with open(filename, 'r') as file:
+        for line in file:
+            parts = line.strip().split()
+            if len(parts) >= 3:
+                students[parts[1] + " " + parts[2]] = parts[0]  # student name -> student ID
+            else:
+                print(f"Skipping invalid student line: {line.strip()}")
     return students
+
 
 def read_assignments(filename):
     assignments = {}
