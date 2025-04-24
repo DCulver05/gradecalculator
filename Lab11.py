@@ -79,7 +79,8 @@ def assignment_stats(assignments, id_to_name, points, submissions):
             scores.append(submissions[sid][aid])
     if scores:
         print(f"Min: {round(min(scores))}%")
-        print(f"Avg: {round(sum(scores) / len(scores))}%")
+        print(f"Avg: {int(sum(scores) / len(scores))}%")
+
         print(f"Max: {round(max(scores))}%")
     else:
         print("No submissions for this assignment.")
